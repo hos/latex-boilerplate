@@ -1,0 +1,318 @@
+% boilerplate.tex - A boilerplate for the lazy; too lazy indeed to
+% comment own boilerplate
+\documentclass[a4paper,twosided,11pt,DIV15]{scrartcl}
+
+% nrs.sty: generic collection of packages and macros from some years of 
+% experience. It includes elements which are sure to be beneficial and do 
+% not alter the overall structure of an average document. All other packages
+% are considered optional and listed in the preample below.
+\usepackage{nrs}
+
+% Mechanician's friendly little LaTeX package (for math)
+\usepackage{msym}
+
+% Fonts
+%\usepackage[garamond]{mathdesign}
+%\usepackage{times}
+%\usepackage{pxfonts}%ccfonts,times,mathpazo,mathpple
+\usepackage[T1]{fontenc}
+
+% Search directory for image files
+\graphicspath{{./img/}}
+
+% Engineering notation for numbers
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{E}}}
+
+% Doc options
+\title{Lorem Ipsum Dolor Sit Amet}
+\author{J. Doe}
+
+% Misc
+%\usepackage{algpseudocode,algorithm}
+%\usepackage[small,compact]{titlesec}
+%\setlength{\parindent}{0pt}
+%\usepackage{parskip}
+%\usepackage[cm]{fullpage}
+%\usepackage{breqn}
+
+\begin{document}
+
+%\assletterhead
+\maketitle
+%\tableofcontents
+
+
+% To clean the boilerplate, 44ggV300ggd
+
+
+
+
+\paragraph{(A1)}
+Sum of $\boa$ and $\bob$ can be shown in basis notation as follows,
+$$ \boa+\bob=a_i\boe_i + b_i\boe_i = (a_i+b_i)\boe_i$$
+and hence is calculated as
+$$ = \left(\rvec{3;2}+\rvec{3;-1}\right)\boe_i=\rvec{6;1}\boe_i$$
+
+The vectors $\boc$ and $\bod$ are linearly independent hence form a
+basis, and this is proved through
+
+$$\det\begin{bmatrix}c_i\\d_i\end{bmatrix} = 
+\begin{vmatrix}2 & -2\\1&2\end{vmatrix} = 6 \neq 0\quad \therefore
+\mathrm{linearly\ independent}$$
+
+The decomposition of the sum $\bos:=\boa+\bob$ with respect to basis $\bar{\boe}_i=\rvec{\boc;\bod}$, in other words finding the coefficients $\bar{s}_i$ follows as
+$$\bar{s}_i\bar{\boe}_i = s_i\boe_i\quad\Longrightarrow\quad 
+%\bar{s}_1\boc + \bar{s}_2\bod = \cvec{6;1}\quad\Longrightarrow\quad
+\rvec{\bar{s}_1;\bar{s}_2}\cvec{\boc;\bod}=\cvec{6;1}\quad\Longrightarrow\quad
+\rvec{\bar{s}_1;\bar{s}_2}\begin{bmatrix}2&-2\\1&2\end{bmatrix}=\cvec{6;1}
+$$
+$$\quad\Longrightarrow\quad
+\rvec{\bar{s}_1;\bar{s}_2}=\cvec{6;1}\begin{bmatrix}2&-2\\1&2\end{bmatrix}^{-1}
+= \rvec{1.833;2.333}
+$$
+Therefore $\bos = 1.833\boc + 2.333\bod$. Graphical proof is given
+below:\\
+
+\paragraph{(A2)} (a)\quad If the vectors $\boa$, $\bob$, $\boc$ are to form a
+basis, they should be linearly independent.
+$$ \det\cvec{\boa;\bob;\boc} = 
+\begin{vmatrix} -1&2&3\\1&-2&3\\1&2&3\end{vmatrix} = 24 \neq 0 
+\quad \therefore \mathrm{linearly\ independent}$$
+
+(b)\quad The unary operator $\unit\ \bullet$
+unitizes a vector $\bov$ with $\unit\ \bov = \frac{\bov}{\|\bov\|}$.
+\begin{align*}
+\bar{\boa} &= \unit\ \boa = \rvec{-0.2672;0.5345;0.8017}\\
+\bar{\bob} &= \unit\ \boa = \rvec{0.2672;-0.5345;0.8017}\\ 
+\bar{\boc} &= \unit\ \boc = \rvec{0.2672;0.5345;0.8017}
+\end{align*}
+
+(c)\quad Naming the newly formed orthonormal basis as
+$\bar{\boe}_i=\rvec{\bar{\boa};\bar{\bob};\bar{\boc}}$, we could obtain
+the coefficients of $\bod$, $\hat{d}_i$ which are with respect to
+basis $\boe_i$. Basically,
+$$d_i\bar{\boe}_i = \hat{d}_i\boe_i$$
+$$\Longrightarrow\ 
+\hat{d}_i\boe_i=\rvec{4;3;1}\cdot
+\begin{bmatrix}
+-0.2672&0.5345&0.8017\\
+0.2672&-0.5345&0.8017\\
+0.2672&0.5345&0.8017\\
+\end{bmatrix}\boe_i
+=\rvec{0.;1.069;6.414}\boe_i
+$$
+(d)\quad In order to calculate the volume of the parallelepiped
+spanned by $\boa$, $\bob$, $\boc$ the parallelepidial product of the
+three vectors can be taken:
+$$ (\boa \times \bob)\cdot \boc = \det\cvec{\boa;\bob;\boc} = 
+\begin{vmatrix} -1&2&3\\1&-2&3\\1&2&3\end{vmatrix} = 24$$
+Hence the volume of the parallelepiped is 24.
+\paragraph{(A3)}
+For $i,\ j,\ k,\ l,\ m = 1,\ 2,\ 3$, the expressions below evaluate as
+\begin{enumerate}[(a)]
+\item $a_i = \rvec{a_1;a_2;a_3}$
+\item $A_{ij}=\begin{bmatrix}A_{11}&A_{12}&A_{13}\\A_{21}&A_{22}&A_{23}\\A_{31}&A_{32}&A_{33}\end{bmatrix}$
+\item $v_i\boe_i=v_1\boe_1+v_2\boe_2+v_3\boe_3$
+
+\item $A_{ij}v_i = \cvec{A_{11}v_1+A_{21}v_2+A_{31}v_3;A_{12}v_1+A_{22}v_2+A_{32}v_3;A_{13}v_1+A_{23}v_2+A_{33}v_3}$
+
+\item $a_i\delta_{ik} = a_k = \rvec{a_1;a_2;a_3}$
+\item $A_{ki}\delta_{il} = A_{kl} = \begin{bmatrix}A_{11}&A_{12}&A_{13}\\A_{21}&A_{22}&A_{23}\\A_{31}&A_{32}&A_{33}\end{bmatrix}$
+\item $A_{ij}B_{ij} = A_{11}B_{11}+A_{12}B_{12}+A_{13}B_{13}+A_{21}B_{21}+A_{22}B_{22}+A_{23}B_{23}+A_{31}B_{31}+A_{32}B_{32}+A_{33}B_{33} $
+\item $A_{im}B_{kl}\delta_{jm}\delta_{jk} = A_{ij}B_{jl}$\\
+\begin{align*}
+&=
+\begin{bmatrix}
+A_{11}B_{11}  & A_{11}B_{12}  & A_{11}B_{13} \\
+A_{21}B_{11}  & A_{21}B_{12}  & A_{21}B_{13} \\
+A_{31}B_{11}  & A_{31}B_{12}  & A_{31}B_{13} \\
+\end{bmatrix}+
+\begin{bmatrix}
+A_{12}B_{21}  & A_{12}B_{22}  & A_{12}B_{23} \\
+A_{22}B_{21}  & A_{22}B_{22}  & A_{22}B_{23} \\
+A_{32}B_{21}  & A_{32}B_{22}  & A_{32}B_{23} \\
+\end{bmatrix}+
+\begin{bmatrix}
+A_{13}B_{31}  & A_{13}B_{32}  & A_{13}B_{33} \\
+A_{23}B_{31}  & A_{23}B_{32}  & A_{23}B_{33} \\
+A_{33}B_{31}  & A_{33}B_{32}  & A_{33}B_{33} \\
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+A_{11}B_{11}  + A_{12}B_{21}  + A_{13}B_{31}  & A_{11}B_{12}  + A_{12}B_{22}  + A_{13}B_{32}  & A_{11}B_{13}  + A_{12}B_{23}  + A_{13}B_{33} \\
+A_{21}B_{11}  + A_{22}B_{21}  + A_{23}B_{31}  & A_{21}B_{12}  + A_{22}B_{22}  + A_{23}B_{32}  & A_{21}B_{13}  + A_{22}B_{23}  + A_{23}B_{33} \\
+A_{31}B_{11}  + A_{32}B_{21}  + A_{33}B_{31}  & A_{31}B_{12}  + A_{32}B_{22}  + A_{33}B_{32}  & A_{31}B_{13}  + A_{32}B_{23}  + A_{33}B_{33} \\
+\end{bmatrix}
+\end{align*}
+
+\item $A_{1lm}B_{lm} = A_{111}B_{11}+A_{112}B_{12}+A_{113}B_{13}+A_{121}B_{21}+A_{122}B_{22}+A_{123}B_{23}+A_{131}B_{31}+A_{132}B_{32}+A_{133}B_{33}$
+\end{enumerate}
+
+\paragraph{(A4)} If $\Bot$ is a symmetric tensor, $\Bot=\Bot^T=\boa
+\otimes \bob = \bob \otimes \boa$. Writing in basis notation,
+$$a_ib_k(\boe_i\otimes\boe_k) = a_kb_i(\boe_i\otimes\boe_k)$$
+It follows that $a_ib_k=a_kb_i$. The terms relevant to the solution of
+this problem are:
+\begin{align*}
+  a_1b_2 &= a_2b_1 \Rightarrow b_2=\alpha=\frac{a_2b_1}{a_1} =
+  \frac{4\times 3}{1} = 12\\
+  a_1b_3 &= a_3b_1 \Rightarrow b_3=\beta=\frac{a_3b_1}{a_1} =
+  \frac{6\times 3}{1} = 18
+\end{align*}
+
+\paragraph{(A5)} Given are the tensors $\Boa=a_{ij}\,\basis{ij}$ and
+$\Bob=b_{kl}\,\basis{kl}$.
+\begin{enumerate}[(a)]
+\item Prove that $\Boa\,\Bob\neq\Bob\,\Boa$.\\
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    \Boa\,\Bob &= a_{ij}\,(\basis{ij})\,b_{kl}\,(\basis{kl})\\
+    &= a_{ij}\,b_{kl}\,(\basis{ij})\,(\basis{kl}) \\
+    &= a_{ij}\,b_{kl}\,\delta_{jk}\,(\basis{il})\\
+    &= a_{ij}\,b_{jl}\,(\basis{il})
+  \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    \Bob\,\Boa &= b_{kl}\,(\basis{kl})\,a_{ij}\,(\basis{ij})\\
+    &= b_{kl}\,a_{ij}\,(\basis{kl})\,(\basis{ij}) \\
+    &= b_{kl}\,a_{ij}\,\delta_{li}\,(\basis{kj})\\
+    &= b_{kl}\,a_{lj}\,(\basis{kj})
+  \end{align*}
+\end{minipage}
+\\[1em]
+$\therefore a_{ij}\,b_{jl} = b_{kl}\,a_{lj}$ if and only if the
+product $\Boa\,\Bob$ is symmetric. Since this is not a general case,
+the tensor product of tensors can be said to be \textbf{not} commutative.
+\item Prove that $(\Boa\,\Bob)^T=\Bob^T\,\Boa^T$.
+
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    (\Boa\,\Bob)^T &= [a_{ij}\,(\basis{ij})\,b_{kl}\,(\basis{kl})]^T\\
+    &= [a_{ij}\,b_{kl}\,(\basis{ij})\,(\basis{kl})]^T \\
+    &= [a_{ij}\,b_{kl}\,\delta_{jk}\,(\basis{il})]^T\\
+    &= [a_{ij}\,b_{jl}\,(\basis{il})]^T\\
+    &= a_{ij}\,b_{jl}\,(\basis{li})
+  \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    \Bob^T\,\Boa^T &= b_{kl}\,(\basis{lk})\,a_{ij}\,(\basis{ji})\\
+    &= b_{kl}\,a_{ij}\,(\basis{lk})\,(\basis{ji}) \\
+    &= b_{kl}\,a_{ij}\,\delta_{kj}\,(\basis{li})\\
+    &= b_{jl}\,a_{ij}\,(\basis{li}) \\
+    &= a_{ij}\,b_{jl}\,(\basis{li})
+  \end{align*}
+\end{minipage}
+\\[1em] Hence $(\Boa\,\Bob)^T=\Bob^T\,\Boa^T$.
+\\Prove that $\tr(\Boa\,\Bob)=\tr(\Bob\,\Boa)$. By definition,
+$\tr(\Boa)=\Boa\cdot \Boi$.\\
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    (\Boa\,\Bob)\cdot \Boi &= a_{ij}\,(\basis{ij})\,b_{kl}\,(\basis{kl})\cdot(\basis{mm})\\
+    &= a_{ij}\,b_{kl}\,(\basis{ij})\,(\basis{kl})\cdot(\basis{mm}) \\
+    &= a_{ij}\,b_{kl}\,\delta_{jk}\,(\basis{il})\cdot(\basis{mm})\\
+    &= a_{ij}\,b_{kl}\,\delta_{jk}\,\delta_{im}\,\delta_{lm}\\
+    &= a_{ik}\,b_{ki}
+  \end{align*}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+    (\Bob\,\Boa)\cdot \Boi &= b_{kl}\,(\basis{kl})\,a_{ij}\,(\basis{ij})\cdot(\basis{mm})\\
+    &= b_{kl}\,a_{ij}\,(\basis{kl})\,(\basis{ij})\cdot(\basis{mm}) \\
+    &= b_{kl}\,a_{ij}\,\delta_{li}\,(\basis{kj})\cdot(\basis{mm})\\
+    &= b_{kl}\,a_{ij}\,\delta_{li}\,\delta_{km}\,\delta_{jm}\\
+    &= b_{ki}\,a_{ik}
+  \end{align*}
+\end{minipage}
+\\[1em] $a_{ik}\,b_{ki}=b_{ki}\,a_{ik}$, hence $\tr(\Boa\,\Bob)=\tr(\Bob\,\Boa)$.
+\item The scalar product $\Boa\cdot\Bob$ is equal to
+\begin{align*}
+  \Boa\cdot\Bob&=a_{ij}\,(\basis{ij})\cdot b_{kl}\,(\basis{kl})  \\
+  &=a_{ij}\,b_{kl}\,(\basis{ij})\cdot(\basis{kl})  \\
+  &=a_{ij}\,b_{kl}\,\delta_{ik}\,\delta{jl} \\
+  &=a_{ij}\,b_{ij}
+\end{align*}
+Hence the scalar product is equal to
+$$a_{ij}b_{ij}=1\times 1+0\times 3+0\times 1+4\times -2+-2\times 3+5\times 1+1\times -2+1\times 4+1\times 2=-4$$
+\end{enumerate}
+
+\newcommand{\boea}{\overset{*}{\boe}}
+
+\paragraph{(A6)} The basis system $\boe_i$ is rotated around the
+$\boe_3$-axis with the angle $\varphi=30\degree$.
+
+\begin{enumerate}[(a)]
+\item  Specify the basis vectors $\boea_i$ of the rotated system.
+  \begin{align*}
+    \boea_1 &= \cos(30)\,\boe_1 + \sin(30)\,\boe_2\\
+    \boea_2 &= -\sin(30)\,\boe_1 + \cos(30)\,\boe_2\\
+    \boea_3 &= \boe_3
+  \end{align*}
+\item Determine the rotation tensor $\Bor$ of the transformation
+  $\boea_i=R_{ij}\,\boe_j$.\\
+Continuing the previous derivation, the transformation can be
+converted into a system with $R_{ij}\,\basis{ij}$ defined as the rotation tensor:
+$$ R_{ij} = 
+\begin{bmatrix}
+  \cos(30) & -\sin(30) & 0 \\
+  \sin(30) & \cos(30) & 0 \\
+  0 & 0 & 1
+\end{bmatrix}
+$$
+\item Show that the rotation tensor $\Bor$ is orthogonal.
+\\ The tensor $\Bor$ is orthogonal if and only if $\Bor^T\,\Bor = \Boi$. Hence
+it can be proved by
+\begin{align*}
+\Bor^T\,\Bor&=
+\begin{bmatrix}
+  \cos(30) & -\sin(30) & 0 \\
+  \sin(30) & \cos(30) & 0 \\
+  0 & 0 & 1
+\end{bmatrix}^T
+\begin{bmatrix}
+  \cos(30) & -\sin(30) & 0 \\
+  \sin(30) & \cos(30) & 0 \\
+  0 & 0 & 1
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+  \cos(30) & \sin(30) & 0 \\
+  -\sin(30) & \cos(30) & 0 \\
+  0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+  \cos(30) & -\sin(30) & 0 \\
+  \sin(30) & \cos(30) & 0 \\
+  0 & 0 & 1
+\end{bmatrix}
+\\&=
+\begin{bmatrix}
+  1 & 0 & 0\\
+  0 & 1 & 0\\
+  0 & 0 & 1
+\end{bmatrix} \basis{ij}\\
+& \therefore \textrm{orthogonal}
+\end{align*}
+
+\end{enumerate}
+
+
+
+% \renewcommand{\bibname}{References}
+% \begin{thebibliography}{9}
+% \bibitem{1}
+%  J. Grandy 
+%   \emph{Efficient Computation of Volume of Hexahedral Cells} 1997\\
+
+% \bibitem{2}
+%   T. H. Cormen, C. E. Leiserson, R. L. Rivest, C. Stein
+% 	\emph{Introduction to Algorithms 3\textsuperscript{rd}ed.}\\
+% \bibitem{3}
+%   K. I. Joy 
+%   \emph{Coordinate Conversion between the Cartesian Frame
+%     and an Arbitrary Frame} 1999
+
+% \end{thebibliography}
+
+\end{document}
