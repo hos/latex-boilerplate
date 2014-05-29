@@ -17,7 +17,7 @@ all: $(PDF)
 
 $(DVI): %.dvi: $(SOURCE)
 	@echo "TEX --> DVI"
-	@latex $< > /dev/null
+	@latex $< 
 
 $(PSF): %.ps: %.dvi
 	@echo "DVI --> PS"
@@ -34,12 +34,6 @@ dvi:    $(DVI)
 ps:     $(PSF)
 
 pdf:    $(PDF)
-
-# To setup the up2date delicious packages
-setup:
-	git clone git://github.com/nrs/msym-latex.git
-	cp -f msym-latex/msym.sty .
-	rm -rf msym-latex/
 
 show:
 	gv $(MAIN) 
