@@ -1,16 +1,11 @@
 # latex-boilerplate
 
-A boilerplate LaTeX file which includes:
+Repository for a LaTeX boilerplate. Has a makefile and shit, yo.
 
-* A makefile for easy compilation
-* The `lazyeqn` package which has useful math macros
-* The `hippopotato` package which has useful macros, environments for formatting
+### Starting
 
-### Cloning
-
-To clone this repository including subpackages, use the `--recursive` option.
-
-    git clone --recursive https://github.com/nrs/latex-boilerplate
+    git clone https://github.com/nrs/latex-boilerplate
+    sh bootstrap
 
 ### Compiling
 

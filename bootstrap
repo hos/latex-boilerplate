@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Clone awesome packages
+git clone http://github.com/nrs/lazyeqn
+git clone http://github.com/nrs/hippopotato
+
+# Clean the boilerplate
+rm .git -rf
+rm README.md
+rm -- "$0"
