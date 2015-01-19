@@ -29,11 +29,11 @@ then
     git add Makefile
     touch README.md
     git add README.md
-    addmodule http://github.com/nrs/lazyeqn
-    addmodule http://github.com/nrs/hippopotato
+    addmodule http://github.com/hos/lazyeqn
+    addmodule http://github.com/hos/hippopotato
 else
-    clonerep http://github.com/nrs/lazyeqn
-    clonerep http://github.com/nrs/hippopotato
+    clonerep http://github.com/hos/lazyeqn
+    clonerep http://github.com/hos/hippopotato
 fi
 
 # remove this script itself
