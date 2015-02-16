@@ -1,9 +1,9 @@
 # Makefile for LaTeX Documents
-# nrs
 
 # Find the main latex files using technology
-SOURCE := $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex)
-#SOURCE := $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex | head -n 1)
+SOURCE := main.tex
+# SOURCE := $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex)
+# SOURCE := $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex | head -n 1)
 
 ALL    := $(wildcard *.tex *.sty)
 DVI    := $(SOURCE:.tex=.dvi)
@@ -15,28 +15,21 @@ PDF    := $(SOURCE:.tex=.pdf)
 
 all: $(PDF)
 
-$(DVI): %.dvi: $(SOURCE)
+%.dvi: $(SOURCE)
 	@echo "TEX --> DVI"
-	@latex $< 
+	@latex $<
 
-$(PSF): %.ps: %.dvi
+%.ps: %.dvi
 	@echo "DVI --> PS"
 	@dvips $< > /dev/null 2>&1
 
-$(PDF): %.pdf: %.ps
+%.pdf: %.ps
 	@echo "PS  --> PDF"
 	@ps2pdf -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress $< $@ > /dev/null 2>&1
 	@echo $@ done.
 
-
-dvi:    $(DVI)
-
-ps:     $(PSF)
-
-pdf:    $(PDF)
-
 show:
-	gv $(MAIN) 
+	gv $(MAIN)
 
 show-dvi:
 	xdvi -watchfile 2 $(DVI)&

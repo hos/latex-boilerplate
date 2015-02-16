@@ -36,5 +36,8 @@ else
     clonerep http://github.com/hos/hippopotato
 fi
 
+mkdir -p img
+mkdir -p fig
+
 # remove this script itself
 rm -- "$0"
