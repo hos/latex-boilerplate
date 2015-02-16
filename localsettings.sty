@@ -1,0 +1,290 @@
+% localsettings.sty provides useful packages and other macros for
+% figures, tables, etc.
+\ProvidesPackage{localsettings}
+
+\setlength{\columnsep}{20pt}
+\usepackage{mdwlist}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{enumerate}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{fancyhdr}
+\usepackage{keyval}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[defaultsans,scale=0.95]{droidsans}
+%\pagestyle{fancyplain}
+%\usepackage[nottoc,numbib]{tocbibind}
+%\usepackage{wrapfig}
+%\usepackage{parskip}
+%\setlength{\columnseprule}{1pt}
+
+\def\TReg{\textsuperscript{\textregistered}}
+\def\TCop{\textsuperscript{\textcopyright}}
+\def\TTra{\textsuperscript{\texttrademark}}
+\def\sup#1{\textsuperscript{#1}}
+%\def\sub#1{\textsubscript{#1}}
+
+\newcommand{\wrap}[4]{
+  \begin{wrapfigure}{#1}{#2\textwidth}
+    \begin{center}
+      \includegraphics[width=#2\textwidth]{#3}
+      \caption{#4}
+    \end{center}
+  \end{wrapfigure}
+}
+
+\newcommand{\centerfigure}[4]{
+  \begin{figure}[htbp]
+    \begin{center}
+      \includegraphics[width=#1\textwidth]{#2}
+      \caption{#3}
+      \label{#4}
+    \end{center}
+  \end{figure}
+}
+
+% Centered figure
+% Usage: \centeredfigure[height=1in, width=1in, scale=0.1, caption=Caption, place=htbp]{path_to_img}
+\def\centeredfigure{\@ifnextchar[\@centeredfigure{\@centeredfigure[]}}
+
+\def\@centeredfigure[#1]#2{
+  \setkeys{hip}{#1}
+
+\def\centeredfigure@includeargs{}
+\ifx\centeredfigure@place\undefined
+  \def\centeredfigure@place{htbp}
+\else
+  \relax
+\fi
+\ifx\centeredfigure@width\undefined
+  \relax
+\else
+  \edef\centeredfigure@includeargs{%
+    \unexpanded\expandafter{\centeredfigure@includeargs}
+    width = \centeredfigure@width,}
+\fi
+\ifx\centeredfigure@height\undefined
+  \relax
+\else
+  \edef\centeredfigure@includeargs{%
+    \unexpanded\expandafter{\centeredfigure@includeargs}
+    height = \centeredfigure@height,}
+\fi
+\ifx\centeredfigure@scale\undefined
+  \relax
+\else
+  \edef\centeredfigure@includeargs{%
+    \unexpanded\expandafter{\centeredfigure@includeargs}
+    scale = \centeredfigure@scale,}
+\fi
+% [\centeredfigure@includeargs] % print the include arguments
+% [\centeredfigure@place] % print the include arguments
+% http://tex.stackexchange.com/questions/11336/macro-for-figure-position
+% The \centeredfigure@place macro needs to be expanded first
+\edef\centeredfigure@figure{\noexpand\begin{figure}[\centeredfigure@place]}%
+\centeredfigure@figure
+% \begin{figure}[htbp]
+% \begin{figure}[\centeredfigure@place]
+  \begin{center}
+    \expandafter\includegraphics\expandafter[\centeredfigure@includeargs]{#2} % include the graphics
+    \ifx\centeredfigure@caption\undefined
+      \relax
+    \else
+      \caption{\centeredfigure@caption}
+    \fi
+    \ifx\centeredfigure@label\undefined
+      \relax
+    \else
+      \label{\centeredfigure@label}
+    \fi
+  \end{center}
+\end{figure}
+\let\centeredfigure@scale\undefined
+\let\centeredfigure@place\undefined
+\let\centeredfigure@width\undefined
+\let\centeredfigure@height\undefined
+\let\centeredfigure@caption\undefined
+\let\centeredfigure@label\undefined
+}
+\define@key{hip}{scale}{\edef\centeredfigure@scale{#1}}
+\define@key{hip}{width}{\edef\centeredfigure@width{#1}}
+\define@key{hip}{height}{\edef\centeredfigure@height{#1}}
+\define@key{hip}{place}{\edef\centeredfigure@place{#1}}
+\define@key{hip}{caption}{\edef\centeredfigure@caption{#1}}
+\define@key{hip}{label}{\edef\centeredfigure@label{#1}}
+
+% Assignment letter head
+\newcommand{\assletterhead}{
+  {
+    \footnotesize
+    \begin{minipage}{3.5cm}
+      \includegraphics[scale=0.7]{your_logo_here.eps}
+    \end{minipage}
+    \hspace{\stretch{1}}
+    \begin{minipage}{4cm}
+      \flushright
+      \textbf{\@date}
+    \end{minipage}
+    \vskip 0.8ex
+    \begin{minipage}[t]{0.8\textwidth}\@title\end{minipage}
+    \begin{minipage}[t]{0.195\textwidth}\flushright\@author\end{minipage}
+    \vskip 0.8ex
+    \hrule
+    \vskip 1.2em
+  }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Define page formatting                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\headheight}{15.2pt}
+
+% \setlength{\headheight}{-25pt}
+
+% \newcommand{\settextwidth}[1]{
+%   \setlength{\hoffset}{-1in}
+%   \setlength{\textwidth}{#1}
+%   \setlength{\oddsidemargin}{(\paperwidth-\textwidth)/2}
+%   \setlength{\headwidth}{\textwidth}
+% }
+
+% \setlength{\headwidth}{\textwidth}
+
+% \setlength{\textheight}{26cm}
+
+
+%\usepackage{odtulogo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Adding Notation Tables                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[toc]{glossaries}
+
+
+\def\listofnotations{\input symbols.tex \clearpage}
+\def\anot #1: #2#3{\parbox{2cm}{#1}  {#2 \dotfill  \pagelabel{#3}}\\}
+\def\newnot#1{\label{#1}}
+\def\asym #1: #2#3{\parbox{2cm}{$#1$}  {#2 \dotfill  \pagelabel{#3}}\\}
+%\usepackage{nomencl}
+%\makenomenclature
+
+
+% \setlength{\parskip}{2pt}
+% \setlength{\parsep}{2pt}
+% \setlength{\headsep}{2pt}
+% \setlength{\topskip}{2pt}
+% \setlength{\topmargin}{2pt}
+% \setlength{\topsep}{2pt}
+% \setlength{\partopsep}{2pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Additional Unused Code                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\fltfigure}[3]{
+
+% \begin{floatingfigure}[r]{#1\textwidth}
+% %\begin{center}
+% \includegraphics[width=#1\textwidth]{#2}
+% \caption{#3}
+% %\end{center}
+% \end{floatingfigure}
+% }
+
+% \newcommand{\wrapright}[3]{
+
+% \begin{wrapfigure}{r}{#1\textwidth}
+% \begin{center}
+% \includegraphics[width=#1\textwidth]{#2}
+% \caption{#3}
+% \end{center}
+
+% \end{wrapfigure}
+% }
+%
+% \newtheoremstyle{exampstyle}
+%   {\topsep} % Space above
+%   {\topsep} % Space below
+%   {} % Body font
+%   {} % Indent amount
+%   {\bfseries} % Theorem head font
+%   {.} % Punctuation after theorem head
+%   {.5em} % Space after theorem head
+%   {} % Theorem head spec (can be left empty, meaning `normal')
+
+% \makeatletter
+% \newcommand\gobblepars{%
+%     \@ifnextchar\par%
+%         {\expandafter\gobblepars\@gobble}%
+%         {}}
+% \makeatother
+
+% Theorem environments like remark, example etc.
+
+% \declaretheoremstyle[
+%     headfont=\bfseries,
+%     notebraces={[}{]},
+%     % bodyfont=\normalfont\itshape,
+%     headpunct={},
+%     % preheadhook={\vspace{1.5ex}},
+%     postheadspace=\newline,
+%     % postheadhook={\textcolor{red}{\rule[.6ex]{\linewidth}{0.4pt}}\\},
+%     postheadhook={\textcolor{gray}{\rule[.6ex]{\linewidth}{0.4pt}}\\},
+%     spaceabove=\parsep,
+%     spacebelow=\parsep,
+%     mdframed={
+%       backgroundcolor=gray!20,
+%       % backgroundcolor=red!20,
+%       % linecolor=red!30,
+%       linecolor=gray!30,
+%       innertopmargin=2ex,
+%       innerbottommargin=3ex,
+%       roundcorner=5pt,
+%       skipabove=\parsep,
+%       skipbelow=\parsep }
+% ]{exampstyle}
+
+% \declaretheorem[
+%     style=exampstyle,
+%     name=Remark,
+%     numberwithin=chapter
+% ]{remark}
+
+% \declaretheorem[
+%     style=exampstyle,
+%     name=Example,
+%     numberwithin=chapter
+% ]{example}
+
+% \declaretheorem[
+%     style=exampstyle,
+%     name=Box,
+%     numberwithin=chapter
+% ]{boxenv}
+
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item%[\hskip\labelsep
+%        \itshape
+%%    #1\@addpunct{.}]\ignorespaces% DELETED
+%    #1]\ignorespaces% ADDED
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother

@@ -30,10 +30,8 @@ then
     touch README.md
     git add README.md
     addmodule http://github.com/hos/lazyeqn
-    addmodule http://github.com/hos/hippopotato
 else
     clonerep http://github.com/hos/lazyeqn
-    clonerep http://github.com/hos/hippopotato
 fi
 
 mkdir -p img
