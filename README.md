@@ -1,10 +1,10 @@
 # latex-boilerplate
 
-Repository for a LaTeX boilerplate. Has a makefile and shit, yo.
+Repository for my LaTeX boilerplate.
 
 ### Starting
 
-    git clone https://github.com/nrs/latex-boilerplate
+    git clone https://github.com/hos/latex-boilerplate
     sh bootstrap
 
 ### Compiling
