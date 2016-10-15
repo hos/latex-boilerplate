@@ -25,10 +25,9 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     git init
-    git add main.tex
-    git add Makefile
+    git add main.tex Makefile
     touch README.md
-    git add README.md
+    git add README.md localsettings.sty .gitignore
     addmodule http://github.com/hos/lazyeqn
 else
     clonerep http://github.com/hos/lazyeqn
