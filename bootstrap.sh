@@ -29,8 +29,10 @@ then
     touch README.md
     git add README.md localsettings.sty .gitignore
     addmodule http://github.com/hos/lazyeqn
+    addmodule http://github.com/hos/shortsym
 else
     clonerep http://github.com/hos/lazyeqn
+    clonerep http://github.com/hos/shortsym
 fi
 
 mkdir -p img
